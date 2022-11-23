@@ -2,16 +2,22 @@ import React, { Fragment, useState } from "react";
 
 import "./App.css";
 
-import MainPage from "./components/MainPage";
-import StoreBooks from "./components/StoreBooks";
-import StoreGames from "./components/StoreGames";
+import MainPage from "./components/MainPage/MainPage";
+import StoreBooks from "./components/StoreBooks/StoreBooks";
+import StoreGames from "./components/StoreGames/StoreGames";
 
 const App = () => {
-  const [selectedStore, setSelectedStore] = useState({storeGames:false, storeBooks:false});
+  
+  const [selectedStore, setSelectedStore] = useState({
+    storeGames: false,
+    storeBooks: false,
+  });
 
   const saveStoreClickHandler = (chosenStore) => {
     setSelectedStore(chosenStore);
   };
+
+  console.log(selectedStore);
 
   return (
     <Fragment>
