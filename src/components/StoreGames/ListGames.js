@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import AddGame from "./AddGame";
 import ButtonDelete from "./ButtonDelete";
 
@@ -8,18 +8,15 @@ const ListGames = (props) => {
 
 
   return (
-    <div>
-      <section>
-        <h1>Store Games</h1>
-      </section>
-      <div className="container w-100 d-flex flex-column mt-auto mb-auto">
+    <Fragment>
+      <div className="container w-100 d-flex flex-column my-4 mb-auto">
         <div className="row px-auto d-flex justify-content-center">
           {props.games.map((game) => {
             return (
               <div
                 key={game.id}
                 id={game.id}
-                className="card h-50"
+                className="card h-50 mx-2"
                 style={{ width: 18 + "rem" }}
               >
                 <img src={game.image} className="card-img-top" alt="game1"></img>
@@ -40,7 +37,7 @@ const ListGames = (props) => {
           <AddGame onNewGameData={props.onNewGameData}></AddGame>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

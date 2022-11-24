@@ -17,7 +17,7 @@ const AddGame = (props) => {
   return (
     <Fragment>
       {newGame && <AddGameModalForm onNewGameData={props.onNewGameData} onCancel={cancelAddGame}></AddGameModalForm>}
-      <div className="card h-auto" style={{ width: 18 + "rem" }}>
+      <div className="card h-auto mx-2" style={{ width: 18 + "rem" }}>
         <div className="card-body text-dark">
           <h1>Add New Game</h1>
           <button className="btn btn-primary" onClick={addFormHandler}>

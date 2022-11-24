@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import "./App.css";
 
@@ -7,21 +7,48 @@ import StoreBooks from "./components/StoreBooks/StoreBooks";
 import StoreGames from "./components/StoreGames/StoreGames";
 
 const App = () => {
-  
   const [selectedStore, setSelectedStore] = useState({
     storeGames: false,
     storeBooks: false,
   });
 
+  useEffect(() => {
+    const storedSelectedStoreInformation = localStorage.getItem("inStore");
+    if (storedSelectedStoreInformation === "0") {
+      setSelectedStore({
+        storeGames: true,
+        storeBooks: false,
+      });
+    } else if (storedSelectedStoreInformation === "1") {
+      setSelectedStore({
+        storeGames: false,
+        storeBooks: true,
+      });
+    }
+  }, []);
+
   const saveStoreClickHandler = (chosenStore) => {
+    if (chosenStore.storeGames) {
+      localStorage.setItem("inStore", "0");
+    } else if (chosenStore.storeBooks) {
+      localStorage.setItem("inStore", "1");
+    }
+
     setSelectedStore(chosenStore);
   };
 
-  console.log(selectedStore);
+  const returnHandle = () => {
+    setSelectedStore({
+      storeGames: false,
+      storeBooks: false,
+    });
+  };
 
   return (
     <Fragment>
-      {selectedStore.storeGames && <StoreGames></StoreGames>}
+      {selectedStore.storeGames && (
+        <StoreGames onReturn={returnHandle}></StoreGames>
+      )}
       {selectedStore.storeBooks && <StoreBooks></StoreBooks>}
       {(selectedStore.storeBooks === false) &
         (selectedStore.storeGames === false) && (
