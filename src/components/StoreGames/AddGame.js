@@ -2,10 +2,11 @@ import React, { Fragment, useState } from "react";
 import AddGameModalForm from "./AddGameModalForm";
 
 
-const AddGame = () => {
+const AddGame = (props) => {
   const [newGame, setnewGame] = useState(false);
 
-  const addFormHandler = () => {
+  const addFormHandler = (event) => {
+    event.preventDefault();
     setnewGame(true);
   };
 
@@ -15,7 +16,7 @@ const AddGame = () => {
 
   return (
     <Fragment>
-      {newGame && <AddGameModalForm onCancel={cancelAddGame}></AddGameModalForm>}
+      {newGame && <AddGameModalForm onNewGameData={props.onNewGameData} onCancel={cancelAddGame}></AddGameModalForm>}
       <div className="card h-auto" style={{ width: 18 + "rem" }}>
         <div className="card-body text-dark">
           <h1>Add New Game</h1>

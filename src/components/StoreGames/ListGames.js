@@ -5,6 +5,8 @@ import ButtonDelete from "./ButtonDelete";
 import image from "./img/mk.png";
 
 const ListGames = (props) => {
+
+
   return (
     <div>
       <section>
@@ -20,7 +22,7 @@ const ListGames = (props) => {
                 className="card h-50"
                 style={{ width: 18 + "rem" }}
               >
-                <img src={image} className="card-img-top" alt="game1"></img>
+                <img src={game.image} className="card-img-top" alt="game1"></img>
                 <div className="card-body text-dark">
                   <h5 className="card-title">{game.nameGame}</h5>
                   <p className="card-text">{game.description}</p>
@@ -35,7 +37,7 @@ const ListGames = (props) => {
               </div>
             );
           })}
-          <AddGame></AddGame>
+          <AddGame onNewGameData={props.onNewGameData}></AddGame>
         </div>
       </div>
     </div>
