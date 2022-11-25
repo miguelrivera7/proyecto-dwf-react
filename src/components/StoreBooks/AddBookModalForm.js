@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import Card from "../UI/Card";
 
-import classes from "./AddGameModalForm.module.css";
+import classes from "./AddBookModalForm.module.css";
 import noImageIcon from "./img/noImageUploadedIcon.png";
 
 const Backdrop = (props) => {
@@ -11,11 +11,10 @@ const Backdrop = (props) => {
 };
 
 const ModalFormOverlay = (props) => {
-  const gameNameRef = useRef();
-  const gameDesignersRef = useRef();
-  const gameDeveloperRef = useRef();
-  const gameDistributorsRef = useRef();
-  const gameGenreRef = useRef();
+  const bookNameRef = useRef();
+  const bookAuthorRef = useRef();
+  const bookGenreRef = useRef();
+  const bookDateRef = useRef();
 
   const [image, setImage] = useState(noImageIcon);
 
@@ -32,20 +31,16 @@ const ModalFormOverlay = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const inputGameName = gameNameRef.current.value;
-    const inputGameDesigner = gameDesignersRef.current.value;
-    const inputGameDeveloper = gameDeveloperRef.current.value;
-    const inputGameDistributor = gameDistributorsRef.current.value;
-    const inputGenreRef = gameGenreRef.current.value;
+    const inputBookName = bookNameRef.current.value;
+    const inputBookAuthor = bookAuthorRef.current.value;
+    const inputGenre = bookGenreRef.current.value;
+    const inputDate = bookDateRef.current.value;
 
-    console.log(inputGameName, inputGameDesigner);
-
-    props.onNewGameData(
-      inputGameName,
-      inputGameDesigner,
-      inputGameDeveloper,
-      inputGameDistributor,
-      inputGenreRef,
+    props.onNewBookData(
+      inputBookName,
+      inputBookAuthor,
+      inputGenre,
+      inputDate,
       image
     );
 
@@ -57,7 +52,7 @@ const ModalFormOverlay = (props) => {
       <header
         className={`${classes.header} ${"d-flex justify-content-between"}`}
       >
-        <h2>Añade un Juego</h2>
+        <h2>Añade un Libro</h2>
         <button
           onClick={cancelHandler}
           type="button"
@@ -68,44 +63,36 @@ const ModalFormOverlay = (props) => {
       <form onSubmit={submitHandler} className={classes.content}>
         <div className="row">
           <div className="col-12 col-sm-6 mb-2">
-            <label className="text-black">Nombre del Juego</label>
+            <label className="text-black">Nombre del Libro</label>
             <input
               className="col-12 col-md-6 form-control"
-              ref={gameNameRef}
+              ref={bookNameRef}
               type="text"
             ></input>
           </div>
           <div className="col-12 col-sm-6 mb-2">
-            <label className="text-black">Diseñadores y Creadores</label>
+            <label className="text-black">Autor</label>
             <input
               className="col-12 col-md-6 form-control"
-              ref={gameDesignersRef}
+              ref={bookAuthorRef}
               type="text"
             ></input>
           </div>
         </div>
         <div className="row">
           <div className="col-12 col-sm-6 mb-2">
-            <label className="text-black">Developer</label>
-            <input
-              className="col-12 col-md-6 form-control"
-              ref={gameDeveloperRef}
-              type="text"
-            ></input>
-          </div>
-          <div className="col-12 col-sm-6 mb-2">
-            <label className="text-black">Distribuidor</label>
-            <input
-              className="col-12 col-md-6 form-control"
-              ref={gameDistributorsRef}
-              type="text"
-            ></input>
-          </div>
-          <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Género</label>
             <input
               className="col-12 col-md-6 form-control"
-              ref={gameGenreRef}
+              ref={bookGenreRef}
+              type="text"
+            ></input>
+          </div>
+          <div className="col-12 col-sm-6 mb-2">
+            <label className="text-black">Fecha de Publicación</label>
+            <input
+              className="col-12 col-md-6 form-control"
+              ref={bookDateRef}
               type="text"
             ></input>
           </div>
@@ -122,7 +109,7 @@ const ModalFormOverlay = (props) => {
           ></input>
           <img
             src={image}
-            alt="Game"
+            alt="Book"
             className={`${classes.image} ${"mt-1 float-center"}`}
           ></img>
         </div>
@@ -132,7 +119,7 @@ const ModalFormOverlay = (props) => {
             Cancel
           </button>
           <button type="submit" className="btn btn-primary">
-            Add Game
+            Add Book
           </button>
         </div>
       </form>
@@ -140,7 +127,7 @@ const ModalFormOverlay = (props) => {
   );
 };
 
-const AddGameModalForm = (props) => {
+const AddBookModalForm = (props) => {
   return (
     <Fragment>
       {ReactDOM.createPortal(
@@ -149,7 +136,7 @@ const AddGameModalForm = (props) => {
       )}
       {ReactDOM.createPortal(
         <ModalFormOverlay
-          onNewGameData={props.onNewGameData}
+          onNewBookData={props.onNewBookData}
           onCancel={props.onCancel}
         ></ModalFormOverlay>,
         document.getElementById("overlay-root")
@@ -158,4 +145,4 @@ const AddGameModalForm = (props) => {
   );
 };
 
-export default AddGameModalForm;
+export default AddBookModalForm;

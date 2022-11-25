@@ -22,12 +22,12 @@
 }
 
 .header {
-  background: #4f005f;
+  background: #545454;
   padding: 1rem;
 }
 
 .header h2 {
-  margin: 0;
+  margin: 0px;
   color: white;
 }
 

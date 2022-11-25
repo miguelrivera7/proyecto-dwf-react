@@ -1,79 +1,80 @@
 import React, { Fragment } from "react";
-import AddGame from "./AddGame";
+import AddBook from "./AddBook";
 import ButtonDelete from "./ButtonDelete";
 
-import classes from "./ListGames.module.css";
+import classes from "./ListBooks.module.css";
 
-const ListGames = (props) => {
+const ListBooks = (props) => {
+
   return (
     <Fragment>
       <div className="container w-100 d-flex flex-column my-4 mb-auto">
         <div className="row px-auto d-flex justify-content-center">
-          {props.games.map((game) => {
+          {props.books.map((book) => {
             
             return (
               <div
-                key={game.id}
-                id={game.id}
+                key={book.id}
+                id={book.id}
                 className="card m-2 pt-2"
                 style={{ width: 18 + "rem" }}
               >
                 <img
-                  src={game.image}
+                  src={book.image}
                   className={`${"card-img-top"} ${classes.image}`}
-                  alt="game1"
+                  alt="book1"
                 ></img>
                 <h5 className="card-title text-dark mt-3">
-                  {game.nombreDelJuego}
+                  {book.nombredelibro}
                 </h5>
                 <div className="card-body text-dark d-flex flex-column">
                   <div className="card">
                     <ul className="list-group list-group-flush text-dark">
                       <li className="list-group-item">
                         <h6 className="card-subtitle mb-2 text-muted">
-                          Creadores y Diseñadores:
+                          Autor:
                         </h6>
-                        {game.creadoresDiseñadores}
-                      </li>
-                      <li className="list-group-item">
-                        <h6 className="card-subtitle mb-2 text-muted">
-                          Desarrollador:
-                        </h6>
-                        {game.desarrollador}
-                      </li>
-                      <li className="list-group-item">
-                        <h6 className="card-subtitle mb-2 text-muted">
-                          Distribuidor:
-                        </h6>
-                        {game.distribuidor}
+                        {book.autor}
                       </li>
                       <li className="list-group-item">
                         <h6 className="card-subtitle mb-2 text-muted">
                           Género:
                         </h6>
-                        {game.genero}
+                        {book.genero}
+                      </li>
+                      <li className="list-group-item">
+                        <h6 className="card-subtitle mb-2 text-muted">
+                          Fecha de Publicación:
+                        </h6>
+                        {book.fechapublicacion}
+                      </li>
+                      <li className="list-group-item">
+                        <h6 className="card-subtitle mb-2 text-muted">
+                          Género:
+                        </h6>
+                        {book.genero}
                       </li>
                     </ul>
                   </div>
                   <div className="d-flex mt-auto pt-2">
                     <button className="btn btn-primary px-auto">Edit</button>
                     <ButtonDelete
-                      id={game.id}
+                      id={book.id}
                       className="btn btn-primary ms-auto"
                       onDelete={props.onDeleteItem}
                     >
-                      Delete Game
+                      Delete book
                     </ButtonDelete>
                   </div>
                 </div>
               </div>
             );
           })}
-          <AddGame onNewGameData={props.onNewGameData}></AddGame>
+          <AddBook onNewBookData={props.onNewBookData}></AddBook>
         </div>
       </div>
     </Fragment>
   );
 };
 
-export default ListGames;
+export default ListBooks;

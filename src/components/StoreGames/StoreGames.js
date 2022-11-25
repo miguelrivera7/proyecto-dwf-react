@@ -2,16 +2,34 @@ import React, { Fragment, useState, useEffect } from "react";
 
 import ListGames from "./ListGames";
 import image1 from "./img/mk.png";
+import image2 from "./img/mc.jpg";
+import image3 from "./img/GTA.jpg";
+import image4 from "./img/gow.jpg";
+import image5 from "./img/smb.jpg";
+import image6 from "./img/sf.jpg";
+import image7 from "./img/cod.jpg";
 
-const INITIAL_DATA = [
-  {
-    id: 0,
-    nameGame: "Mortal Combat",
-    description:
-      "En una misteriosa isla, internada en los mares de China y desconocida por el resto del mundo, los luchadores sobrenaturales luchan por el destino de la Tierra.",
-    image: image1,
-  },
-];
+import INITIAL_DATA from "./gamesData.json";
+
+[
+  INITIAL_DATA[0].image,
+  INITIAL_DATA[1].image,
+  INITIAL_DATA[2].image,
+  INITIAL_DATA[3].image,
+  INITIAL_DATA[4].image,
+  INITIAL_DATA[5].image,
+  INITIAL_DATA[6].image,
+] = [image1, image2, image3, image4, image5, image6, image7];
+
+// const INITIAL_DATA = [
+//   {
+//     id: 0,
+//     nameGame: "Mortal Combat",
+//     description:
+//       "En una misteriosa isla, internada en los mares de China y desconocida por el resto del mundo, los luchadores sobrenaturales luchan por el destino de la Tierra.",
+//     image: image1,
+//   },
+// ];
 
 const StoreGames = (props) => {
   const [gamesData, setgamesData] = useState(INITIAL_DATA);
@@ -44,14 +62,24 @@ const StoreGames = (props) => {
     });
   };
 
-  const addItemHandler = (gameName, gameDescription, image) => {
+  const addItemHandler = (
+    gameName,
+    gameDesigners,
+    gameDeveloper,
+    gameDistributor,
+    gameGenre,
+    image
+  ) => {
     console.log("run Add");
     setgamesData((prevGames) => {
       const updatedGames = [...prevGames];
       updatedGames.push({
         id: Math.random().toString(),
-        nameGame: gameName,
-        description: gameDescription,
+        nombredelibro: gameName,
+        creadoresDiseñadores: gameDesigners,
+        desarrollador: gameDeveloper,
+        distribuidor: gameDistributor,
+        genero: gameGenre,
         image: image,
       });
       localStorage.setItem("gamesData", JSON.stringify(updatedGames));
@@ -66,10 +94,12 @@ const StoreGames = (props) => {
 
   return (
     <Fragment>
-      <nav class="navbar bg-light">
+      <nav className="navbar bg-light">
         <div className="container-fluid">
           <h1 className="text-dark">Store Games</h1>
-          <button onClick={returnHandle}>Return to Main Page</button>
+          <button className="btn btn-secondary" onClick={returnHandle}>
+            Volver a la página principal
+          </button>
         </div>
       </nav>
 

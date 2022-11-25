@@ -1,0 +1,96 @@
+#menu{
+    background-color: black;
+  }
+  
+  .navbar-brand{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  h3{
+    color: white;
+  }
+  
+  h5{
+    margin-left: 8%;
+    font-family: Arial, Helvetica, sans-serif
+  }
+  
+  #tienda{
+    animation-duration: 4s;
+    animation-name: slide1;
+  }
+  
+  #seccion{
+    animation-duration: 2s;
+    animation-name: seccion;
+  }
+  
+  /* #footer{
+    
+    text-align: center;
+    animation-duration: 3s;
+    animation-name: slidein;
+  } */
+
+  .wrapper {
+    height: 50vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: center;
+  }
+  
+  .typing-demo {
+    width: 78.5ch;
+    animation: typing 5s steps(78), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 1em;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+  
+  /* @keyframes slidein {
+    from {
+      margin-top: 100%;
+      width: 100%
+    }
+  
+    to {
+      margin-top: 0%;
+      width: 100%;
+    }
+  } */
+  
+  @keyframes slide1{
+    from{
+      opacity: 0;
+      width: 100%;
+    }
+    to {
+      opacity: 100%;
+      width: 100%;
+    }
+  }
+  
+  @keyframes seccion{
+    from{
+      opacity: 0;
+      width: 100%;
+    }
+    to {
+      opacity: 100%;
+      width: 100%;
+    }
+  }

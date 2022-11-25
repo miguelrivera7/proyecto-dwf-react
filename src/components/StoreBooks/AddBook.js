@@ -1,27 +1,27 @@
 import React, { Fragment, useState } from "react";
-import AddGameModalForm from "./AddGameModalForm";
+import AddBookModalForm from "./AddBookModalForm";
 
 
-const AddGame = (props) => {
-  const [newGame, setnewGame] = useState(false);
+const AddBook = (props) => {
+  const [newBook, setnewBook] = useState(false);
 
   const addFormHandler = (event) => {
     event.preventDefault();
-    setnewGame(true);
+    setnewBook(true);
   };
 
-  const cancelAddGame = (cancel) => {
-    setnewGame(cancel);
+  const cancelAddBook = (cancel) => {
+    setnewBook(cancel);
   }
 
   return (
     <Fragment>
-      {newGame && <AddGameModalForm onNewGameData={props.onNewGameData} onCancel={cancelAddGame}></AddGameModalForm>}
+      {newBook && <AddBookModalForm onNewBookData={props.onNewBookData} onCancel={cancelAddBook}></AddBookModalForm>}
       <div className="card m-2 pt-2" style={{ width: 18 + "rem" }}>
         <div className="card-body text-dark d-flex flex-column justify-content-center">
-          <h1>Add New Game</h1>
+          <h1>Add New Book</h1>
           <button className="btn btn-primary" onClick={addFormHandler}>
-            Add Game
+            Add Book
           </button>
         </div>
       </div>
@@ -29,4 +29,4 @@ const AddGame = (props) => {
   );
 };
 
-export default AddGame;
+export default AddBook;

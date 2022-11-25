@@ -49,7 +49,9 @@ const App = () => {
       {selectedStore.storeGames && (
         <StoreGames onReturn={returnHandle}></StoreGames>
       )}
-      {selectedStore.storeBooks && <StoreBooks></StoreBooks>}
+      {selectedStore.storeBooks && (
+        <StoreBooks onReturn={returnHandle}></StoreBooks>
+      )}
       {(selectedStore.storeBooks === false) &
         (selectedStore.storeGames === false) && (
         <MainPage

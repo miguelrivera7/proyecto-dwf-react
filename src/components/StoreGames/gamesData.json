@@ -1,0 +1,58 @@
+[
+  {
+    "id": 0,
+    "nombreDelJuego": "Mortal Kombat",
+    "creadoresDiseñadores": "Ed Boon y John Tobias",
+    "desarrollador": "Avalanche Software Eurocom, Midway Games, Virtucraft",
+    "distribuidor": "Midway Games (1992-2009),Warner Bros Interactive Entertainment (2009-presente)",
+    "genero": "Lucha"
+  },
+  {
+    "id": 1,
+    "nombreDelJuego": "Minecraft",
+    "creadoresDiseñadores": "Daniel Rosenfeld, Lena Raine",
+    "desarrollador": "Jens Bergensten",
+    "distribuidor": "Xbox Game Studios, Sony Computer Entertainment",
+    "genero": "Sandbox"
+  },
+  {
+    "id": 2,
+    "nombreDelJuego": "Grand Theft Auto",
+    "creadoresDiseñadores": "David Jones, Mike Dailly",
+    "desarrollador": " Rockstar (ex-DMA Design)",
+    "distribuidor": "Capcom, BMG Interactive, Rockstar Game",
+    "genero": "Accion-aventura"
+  },
+  {
+    "id": 3,
+    "nombreDelJuego": "God Of War",
+    "creadoresDiseñadores": "David Jaffe, Cory Barlog",
+    "desarrollador": "SCE santa Monica Studio",
+    "distribuidor": "Sony Computer Entertainment",
+    "genero": "Accion-aventura"
+  },
+  {
+    "id": 4,
+    "nombreDelJuego": "Super Mario Bros",
+    "creadoresDiseñadores": "Takashi Tezuka, Shigeru Miyamoto",
+    "desarrollador": "Nintendo Entertainment",
+    "distribuidor": "Nintendo",
+    "genero": "Plataformas"
+  },
+  {
+    "id": 5,
+    "nombreDelJuego": "Street Fighter",
+    "creadoresDiseñadores": "CapCom",
+    "desarrollador": "Capcom",
+    "distribuidor": "Capcom",
+    "genero": "Lucha"
+  },
+  {
+    "id": 6,
+    "nombreDelJuego": "Call of Duty",
+    "creadoresDiseñadores": "Infinity Ward",
+    "desarrollador": "Spark Unlimited",
+    "distribuidor": "Activision",
+    "genero": "Bélico-acción"
+  }
+]
