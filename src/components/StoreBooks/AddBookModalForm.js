@@ -17,6 +17,30 @@ const ModalFormOverlay = (props) => {
   const bookDateRef = useRef();
 
   const [image, setImage] = useState(noImageIcon);
+  const [isValid, setIsValid] = useState({
+    inputNameIsValid: false,
+    inputAuthorIsValid: false,
+    inputGenreIsValid: false,
+    inputDateIsValid: false,
+    inputImageIsValid: false,
+  });
+
+  // const nameValidityHandle = (event) => {
+
+  //   console.log(event.target.value.trim().length);
+
+  //   if(event.target.value.trim().length <= 1){
+  //     console.log('validando')
+  //     setIsValid({
+  //       inputNameIsValid: true,
+  //       inputAuthorIsValid: false,
+  //       inputGenreIsValid: false,
+  //       inputDateIsValid: false,
+  //     });
+
+  //     console.log(isValid.inputNameIsValid)
+  //   }
+  // }
 
   const cancelHandler = (event) => {
     event.preventDefault();
@@ -35,6 +59,27 @@ const ModalFormOverlay = (props) => {
     const inputBookAuthor = bookAuthorRef.current.value;
     const inputGenre = bookGenreRef.current.value;
     const inputDate = bookDateRef.current.value;
+
+    const validando = {
+      inputNameIsValid: inputBookName.trim().length === 0,
+      inputAuthorIsValid: inputBookAuthor.trim().length === 0,
+      inputGenreIsValid: inputGenre.trim().length === 0,
+      inputDateIsValid: inputDate.trim().length === 0,
+      inputImageIsValid: image === noImageIcon,
+    };
+
+    if (
+      validando.inputNameIsValid ||
+      validando.inputAuthorIsValid ||
+      validando.inputGenreIsValid ||
+      validando.inputDateIsValid ||
+      validando.inputImageIsValid
+    ) {
+      setIsValid(validando);
+      return;
+    }
+
+    console.log(inputBookName);
 
     props.onNewBookData(
       inputBookName,
@@ -60,20 +105,33 @@ const ModalFormOverlay = (props) => {
           aria-label="Close"
         ></button>
       </header>
-      <form onSubmit={submitHandler} className={classes.content}>
+      <form onSubmit={submitHandler} className={`${classes.content}`}>
         <div className="row">
+          {(isValid.inputNameIsValid ||
+            isValid.inputAuthorIsValid ||
+            isValid.inputGenreIsValid ||
+            isValid.inputDateIsValid) && (
+            <div className="alert alert-danger" role="alert">
+              Ingresa toda la informacion solicitada.
+            </div>
+          )}
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Nombre del Libro</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"col-12 col-md-6 form-control"} ${
+                isValid.inputNameIsValid && "border border-danger"
+              }`}
               ref={bookNameRef}
               type="text"
+              //onChange={nameValidityHandle}
             ></input>
           </div>
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Autor</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"form-control"} ${
+                isValid.inputAuthorIsValid && "border border-danger"
+              }`}
               ref={bookAuthorRef}
               type="text"
             ></input>
@@ -83,15 +141,19 @@ const ModalFormOverlay = (props) => {
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Género</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"form-control"} ${
+                isValid.inputGenreIsValid && "border border-danger"
+              }`}
               ref={bookGenreRef}
               type="text"
             ></input>
           </div>
-          <div className="col-12 col-sm-6 mb-2">
+          <div className="col-12 col-sm-6">
             <label className="text-black">Fecha de Publicación</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"form-control"} ${
+                isValid.inputDateIsValid && "border border-danger"
+              }`}
               ref={bookDateRef}
               type="text"
             ></input>
@@ -102,7 +164,9 @@ const ModalFormOverlay = (props) => {
             Cargue una imagen del juego
           </label>
           <input
-            className="form-control"
+            className={`${"form-control"} ${
+              isValid.inputImageIsValid && "border border-danger"
+            }`}
             type="file"
             id="formFile"
             onChange={handleChange}

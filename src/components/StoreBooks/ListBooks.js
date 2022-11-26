@@ -48,12 +48,6 @@ const ListBooks = (props) => {
                         </h6>
                         {book.fechapublicacion}
                       </li>
-                      <li className="list-group-item">
-                        <h6 className="card-subtitle mb-2 text-muted">
-                          Género:
-                        </h6>
-                        {book.genero}
-                      </li>
                     </ul>
                   </div>
                   <div className="d-flex mt-auto pt-2">

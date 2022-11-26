@@ -18,6 +18,14 @@ const ModalFormOverlay = (props) => {
   const gameGenreRef = useRef();
 
   const [image, setImage] = useState(noImageIcon);
+  const [isValid, setIsValid] = useState({
+    inputNameIsValid: false,
+    inputDesignerIsValid: false,
+    inputDeveloperIsValid: false,
+    inputDistributorIsValid: false,
+    inputGenreIsValid: false,
+    inputImageIsValid: false,
+  });
 
   const cancelHandler = (event) => {
     event.preventDefault();
@@ -36,16 +44,35 @@ const ModalFormOverlay = (props) => {
     const inputGameDesigner = gameDesignersRef.current.value;
     const inputGameDeveloper = gameDeveloperRef.current.value;
     const inputGameDistributor = gameDistributorsRef.current.value;
-    const inputGenreRef = gameGenreRef.current.value;
+    const inputGenre = gameGenreRef.current.value;
 
-    console.log(inputGameName, inputGameDesigner);
+    const validando = {
+      inputNameIsValid: inputGameName.trim().length === 0,
+      inputDesignerIsValid: inputGameDesigner.trim().length === 0,
+      inputDeveloperIsValid: inputGameDeveloper.trim().length === 0,
+      inputDistributorIsValid: inputGameDistributor.trim().length === 0,
+      inputGenreIsValid: inputGenre.trim().length === 0,
+      inputImageIsValid: image === noImageIcon,
+    };
+
+    if (
+      validando.inputNameIsValid ||
+      validando.inputDesignerIsValid ||
+      validando.inputDeveloperIsValid ||
+      validando.inputDistributorIsValid ||
+      validando.inputGenreIsValid ||
+      validando.inputImageIsValid
+    ) {
+      setIsValid(validando);
+      return;
+    }
 
     props.onNewGameData(
       inputGameName,
       inputGameDesigner,
       inputGameDeveloper,
       inputGameDistributor,
-      inputGenreRef,
+      inputGenre,
       image
     );
 
@@ -67,10 +94,22 @@ const ModalFormOverlay = (props) => {
       </header>
       <form onSubmit={submitHandler} className={classes.content}>
         <div className="row">
+          {(isValid.inputNameIsValid ||
+            isValid.inputDesignerIsValid ||
+            isValid.inputDeveloperIsValid ||
+            isValid.inputDistributorIsValid ||
+            isValid.inputGenreIsValid ||
+            isValid.inputImageIsValid) && (
+            <div className="alert alert-danger" role="alert">
+              Ingresa toda la informacion solicitada.
+            </div>
+          )}
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Nombre del Juego</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"col-12 col-md-6 form-control"} ${
+                isValid.inputNameIsValid && "border border-danger"
+              }`}
               ref={gameNameRef}
               type="text"
             ></input>
@@ -78,7 +117,9 @@ const ModalFormOverlay = (props) => {
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Diseñadores y Creadores</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"col-12 col-md-6 form-control"} ${
+                isValid.inputDesignerIsValid && "border border-danger"
+              }`}
               ref={gameDesignersRef}
               type="text"
             ></input>
@@ -88,7 +129,9 @@ const ModalFormOverlay = (props) => {
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Developer</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"col-12 col-md-6 form-control"} ${
+                isValid.inputDeveloperIsValid && "border border-danger"
+              }`}
               ref={gameDeveloperRef}
               type="text"
             ></input>
@@ -96,7 +139,9 @@ const ModalFormOverlay = (props) => {
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Distribuidor</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"col-12 col-md-6 form-control"} ${
+                isValid.inputDistributorIsValid && "border border-danger"
+              }`}
               ref={gameDistributorsRef}
               type="text"
             ></input>
@@ -104,7 +149,9 @@ const ModalFormOverlay = (props) => {
           <div className="col-12 col-sm-6 mb-2">
             <label className="text-black">Género</label>
             <input
-              className="col-12 col-md-6 form-control"
+              className={`${"col-12 col-md-6 form-control"} ${
+                isValid.inputGenreIsValid && "border border-danger"
+              }`}
               ref={gameGenreRef}
               type="text"
             ></input>
@@ -115,7 +162,9 @@ const ModalFormOverlay = (props) => {
             Cargue una imagen del juego
           </label>
           <input
-            className="form-control"
+            className={`${"col-12 col-md-6 form-control"} ${
+              isValid.inputImageIsValid && "border border-danger"
+            }`}
             type="file"
             id="formFile"
             onChange={handleChange}

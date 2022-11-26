@@ -70,7 +70,7 @@ const StoreBooks = (props) => {
       const updatedBooks = [...prevBooks];
       updatedBooks.push({
         id: Math.random().toString(),
-        nombreDelJuego: bookName,
+        nombredelibro: bookName,
         autor: bookAuthor,
         genero: bookGenre,
         fechapublicacion: bookDate,
